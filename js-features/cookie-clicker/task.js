@@ -1,36 +1,17 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const cookie = document.getElementById('cookie');
-
-    const counter = new Counter();
-
-    cookie.addEventListener('click', () => {
-        counter.plusClick();
-    });
-});
-
-class Counter {
-    constructor() {
-        this.clicksCounter = document.getElementById('clicker__counter');
-        this.countSpeedElement = document.getElementById('clicker__avg');
-        this.clicksCount = Number(this.clicksCounter.innerText);
-        this.prevClickTime = null;
-        this.currentClickTime = null;
-    }
-
-    plusClick() {
-        this.currentClickTime = new Date();
-        this.clicksCount = this.clicksCount + 1;
-        this.clicksCounter.innerText = this.clicksCount;
-        this.updateClickAvg();
-        this.prevClickTime = this.currentClickTime;
-    }
-
-    updateClickAvg() {
-        if (!this.prevClickTime) {
-            return;
-        }
-
-        const diff = (this.currentClickTime.getTime() - this.prevClickTime.getTime()) / 1000;
-        this.countSpeedElement.innerText = (1 / diff).toFixed(2);
-    }
-}
+const cookieClickCounter = document.getElementById('clicker__counter'); 
+ const cookieClickSpeed = document.getElementById('clicker__speed'); 
+  
+ let clickTime = Date.now(); 
+  
+ function cookieClick() { 
+     cookieClickCounter.textContent = parseInt(cookieClickCounter.textContent) + 1; 
+     cookieClickSpeed.textContent = (1 / ((Date.now() - clickTime) / 1000)).toFixed(2); 
+     clickTime = Date.now(); 
+  
+     if(cookieClickCounter.textContent % 2 !== 0) { 
+         this.width *= 1.3; 
+     } else { 
+         this.width /= 1.3; 
+     } 
+ } 
+ cookie.onclick = cookieClick;
