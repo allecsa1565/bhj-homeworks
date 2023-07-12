@@ -1,41 +1,33 @@
-document.addEventListener('DOMContentLoaded', () => {
-    const holes = document.querySelectorAll('.hole');
-    const killedCounter = document.getElementById('dead');
-    const lostCounter = document.getElementById('lost');
-
-    let killed = parseInt(killedCounter.innerText);
-    let lost = parseInt(lostCounter.innerText);
-
-    holes.forEach((hole) => {
-        hole.addEventListener('click', () => {
-            if (checkHit(hole)) {
-                killed = killed + 1;
-                updateStatistic(killed, killedCounter);
-            } else {
-                lost = lost + 1;
-                updateStatistic(lost, lostCounter);
-            }
-
-            processGame(killed, lost);
-        });
-    })
-});
-
-function checkHit(hole) {
-    return hole.classList.contains('hole_has-mole');
-}
-
-function updateStatistic(count, counter) {
-    counter.innerText = count;
-}
-
-function processGame(killed, lost) {
-    if (killed === 10) {
-        alert('Вы выиграли!');
-        return;
-    }
-
-    if (lost === 5) {
-        alert('Вы проиграли!');
-    }
-}
+const dead = document.getElementById('dead'); 
+ const lost = document.getElementById('lost'); 
+  
+ function setHole() { 
+     if (this.className.includes("hole_has-mole")) { 
+         dead.textContent = parseInt(dead.textContent) + 1; 
+     } else { 
+         lost.textContent = parseInt(lost.textContent) + 1; 
+     } 
+  
+     if (parseInt(dead.textContent) === 10) { 
+         alert("Вы победили!"); 
+         clear(); 
+     } 
+  
+     if (parseInt(lost.textContent) === 5) { 
+         alert("Вы проиграли"); 
+         clear(); 
+     } 
+ } 
+  
+ function getHole(index) { 
+     return document.getElementById(`hole${index}`); 
+ } 
+  
+ for (let i = 1; i <= 9; i++) { 
+     getHole(i).onclick = setHole; 
+ } 
+  
+ function clear() { 
+     dead.textContent = 0; 
+     lost.textContent = 0; 
+ }
