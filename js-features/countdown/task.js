@@ -1,48 +1,41 @@
-document.addEventListener('DOMContentLoaded', ()=> {
-    const timeElement = document.getElementById('timer');
-
-    let date = parseViewData(timeElement);
-
-    const interval = setInterval(() => {
-        if (isEndedTimer(date)) {
-            finishInterval(interval);
-            return;
-        }
-
-        date = minusSecondFromDate(date);
-        updateCounter(timeElement, date);
-    }, 1000);
-});
-
-function parseViewData(timeElement) {
-    let [hours, minutes, seconds] = timeElement.innerText.split(':').map(num => parseInt(num));
-
-    const date = new Date();
-
-    date.setHours(hours);
-    date.setMinutes(minutes);
-    date.setSeconds(seconds);
-
-    return date;
-}
-
-function minusSecondFromDate(date) {
-    return new Date( +date - 1000 );
-}
-
-function isEndedTimer(date) {
-    return date.getHours() === 0 && date.getMinutes() === 0 && date.getSeconds() === 0;
-}
-
-function finishInterval(interval) {
-    clearInterval(interval);
-    alert('Вы победили в конкурсе!');
-}
-
-function updateCounter(timeElement, date) {
-    timeElement.innerText = `${getDatePartView(date.getHours())}:${getDatePartView(date.getMinutes())}:${getDatePartView(date.getSeconds())}`;
-}
-
-function getDatePartView(number) {
-    return number < 10 ? `0${number}` : number;
-}
+function counter() { 
+     const timer = document.getElementById('timer'); 
+     let time = timer.textContent.split(':'); 
+  
+     if (time.length === 3) { 
+         let hours = parseInt(time[0]); 
+         let minutes = parseInt(time[1]); 
+         let seconds = parseInt(time[2]); 
+  
+         seconds -= 1; 
+  
+         if (seconds === 0 && minutes !== 0) { 
+             minutes -= 1; 
+             seconds = 59; 
+         } 
+  
+         if (minutes === 0 && hours !== 0) { 
+             hours -= 1; 
+             minutes = 59; 
+         } 
+  
+         hours = hours < 10 ? `0${hours}` : hours; 
+         minutes = minutes < 10 ? `0${minutes}` : minutes; 
+         seconds = seconds < 10 ? `0${seconds}` : seconds; 
+  
+         timer.textContent = `${hours}:${minutes}:${seconds}`; 
+  
+         if (hours === "00" && minutes === "00" && seconds === "00") { 
+             alert("Вы победили в конкурсе!"); 
+             clearInterval(interval); 
+         } 
+     } else { 
+         timer.textContent -= 1; 
+  
+         if(parseInt(timer.textContent) === 0){ 
+             alert('Вы победили в конкурсе!'); 
+             clearInterval(interval); 
+         } 
+     } 
+ } 
+ const interval = setInterval(counter, 1000);
