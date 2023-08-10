@@ -3,7 +3,7 @@ const form = document.getElementById('form');
 form.addEventListener('submit', (e) => {
   const formData = new FormData(form);
   const xhRequest = new XMLHttpRequest();
-  xhRequest.open('POST', ' https://netology-slow-rest.herokuapp.com/upload.php');
+  xhRequest.open('GET',' https://students.netoservices.ru/nestjs-backend/poll ');
   const progress = document.getElementById('progress');
 
   xhRequest.upload.onloadstart = function() {
