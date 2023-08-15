@@ -3,7 +3,7 @@ const form = document.getElementById('form');
 form.addEventListener('submit', (e) => {
   const formData = new FormData(form);
   const xhRequest = new XMLHttpRequest();
-  xhRequest.open('GET',' https://students.netoservices.ru/nestjs-backend/upload');
+  xhRequest.open('POST',' https://students.netoservices.ru/nestjs-backend/upload');
   const progress = document.getElementById('progress');
 
   xhRequest.upload.onloadstart = function() {
