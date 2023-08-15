@@ -1,7 +1,7 @@
 const pollTitle = document.getElementById('poll__title');
 const pollAnswer = document.getElementById('poll__answers');
 const xhRequest = new XMLHttpRequest();
-xhRequest.open('GET',https://students.netoservices.ru/nestjs-backend/poll );
+xhRequest.open('GET','https://students.netoservices.ru/nestjs-backend/poll');
 xhRequest.send();
 xhRequest.addEventListener('readystatechange', () => {
 
