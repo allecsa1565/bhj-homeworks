@@ -7,20 +7,9 @@ form.addEventListener('submit', (e) => {
   const progress = document.getElementById('progress');
 
   xhRequest.upload.onloadstart = function() {
-
-    progress.value = 0.1
-
-    function increase() {
-
-      if(progress.value <= 0.9) {
-        progress.value = progress.value + 0.1;
-      }            
-    } 
-
-    setInterval(increase, 2000);
-  };  
-
-  xhRequest.upload.onload = function() {
+  xhr.upload.onprogress = event => { 
+     progress.value = event.loaded / event.total; 
+   };  xhRequest.upload.onload = function() {
     progress.value = 1.0;
   }
     
