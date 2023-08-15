@@ -1,3 +1,4 @@
+form.addEventListener('submit') callback
 const form = document.getElementById('form');
 
 form.addEventListener('submit', (e) => {
@@ -7,7 +8,6 @@ form.addEventListener('submit', (e) => {
   xhRequest.open('POST',' https://students.netoservices.ru/nestjs-backend/upload'); xhRequest.setRequestHeader("Content-Type", "multipart/form-date");
   const progress = document.getElementById('progress');
 
-  xhRequest.upload.onloadstart = function() {
   xhRequest.upload.onprogress = event => { 
      progress.value = event.loaded / event.total; 
    };  
@@ -16,5 +16,4 @@ form.addEventListener('submit', (e) => {
   }
     
   xhRequest.send(formData);
-  e.preventDefault();
 });
