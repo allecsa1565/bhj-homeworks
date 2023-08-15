@@ -1,7 +1,7 @@
 const loader = document.getElementById('loader');
 const items = document.getElementById('items');
 const xhrequest = new XMLHttpRequest();
-xhrequest.open('GET', 'https://netology-slow-rest.herokuapp.com/');
+  xhRequest.open('GET',' https://students.netoservices.ru/nestjs-backend/poll ');
 xhrequest.setRequestHeader('Content-Type', 'application/json');
 xhrequest.send();
 xhrequest.addEventListener('readystatechange', ()=>{
