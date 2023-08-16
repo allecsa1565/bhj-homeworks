@@ -1,4 +1,3 @@
-form.addEventListener('submit') callback
 const form = document.getElementById('form');
 
 form.addEventListener('submit', (e) => {
