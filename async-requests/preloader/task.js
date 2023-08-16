@@ -2,7 +2,7 @@ const loader = document.getElementById('loader');
 const items = document.getElementById('items');
 const xhrequest = new XMLHttpRequest();
   xhrequest.open('GET',' https://students.netoservices.ru/nestjs-backend/slow-get-courses');
-xhrequest.setrequestHeader('Content-Type', 'application/json');
+xhrequest.setRequestHeader('Content-Type', 'application/json');
 xhrequest.send();
 xhrequest.addEventListener('readystatechange', ()=>{
 
