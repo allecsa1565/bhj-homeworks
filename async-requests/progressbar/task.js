@@ -4,7 +4,7 @@ const form = document.getElementById('form');
 form.addEventListener('submit', (e) => {
   e.preventDefault();
   const formData = new FormData(form);
-  const xhrequest = new XMLHttprequest();
+  const xhrequest = new XMLHttpRequest();
   xhrequest.open('POST',' https://students.netoservices.ru/nestjs-backend/upload'); xhrequest.setRequestHeader("Content-Type", "multipart/form-data");
   const progress = document.getElementById('progress');
 
